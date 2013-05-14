@@ -13,7 +13,7 @@ module NewRelicTwilio
       agent_human_labels("Overview") { "Overview" }
 
       def setup_metrics
-        @collector  = Collectors::Usage.new(account_sid, auth_token)
+        @collector  = Collectors::Usage.new(@options[:account_sid], @options[:auth_token])
         @components = Components::Collection.new("com.newrelic.twilio", version)
       end
 

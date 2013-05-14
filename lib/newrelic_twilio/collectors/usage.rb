@@ -1,12 +1,16 @@
 module NewRelicTwilio
   module Collectors
     class Usage < Base
-      def subaccounts
-        @twilio.accounts
+      def account_data_points(account)
+        account.usage.records.today.list.map do |record|
+          [account.sid, record.category, record.usage]
+        end
       end
 
       def collect
-        puts subaccounts.inspect
+        subaccounts.each do |account|
+          puts account_data_points(account).inspect
+        end
         []
       end
     end
