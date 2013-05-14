@@ -18,26 +18,27 @@ module NewRelicTwilio
         data_points
       end
 
-      def collect
-        @last_data_points ||= {}
-        new_data_points     = {}
-        subaccounts.each do |account|
-          new_data_points[account.friendly_name] = account_data_points(account)
-        end
+      def calculate_metrics
         metrics = []
-        new_data_points.each do |component, data_points|
-          data_points.each do |metric_name, details|
+        accounts.each do |account|
+          component = account.friendly_name
+          @last_data_points[component] ||= {}
+          account_data_points(account).each do |metric_name, point|
             begin
-              last_details = @last_data_points[component][metric_name]
-              if details["day"] == last_details["day"]
-                value = details["value"] - last_details["value"]
-                metrics << [component, metric_name, details["unit"], value]
+              last_point = @last_data_points[component][metric_name]
+              if point["day"] == last_point["day"]
+                value = point["value"] - last_point["value"]
+                metrics << [component, metric_name, point["unit"], value]
               end
             rescue; end
+            @last_data_points[component][metric_name] = point
           end
         end
-        @last_data_points = new_data_points
         metrics
+      end
+
+      def collect
+        calculate_metrics
       end
     end
   end

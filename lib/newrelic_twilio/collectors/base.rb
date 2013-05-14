@@ -3,9 +3,10 @@ module NewRelicTwilio
     class Base
       def initialize(account_sid, auth_token)
         @twilio = ::Twilio::REST::Client.new(account_sid, auth_token)
+        @last_data_points = {}
       end
 
-      def subaccounts
+      def accounts
         @twilio.accounts.list
       end
 
