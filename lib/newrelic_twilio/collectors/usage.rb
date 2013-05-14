@@ -24,13 +24,11 @@ module NewRelicTwilio
           component = account.friendly_name
           @last_data_points[component] ||= {}
           account_data_points(account).each do |metric_name, point|
-            begin
-              last_point = @last_data_points[component][metric_name]
-              if point["day"] == last_point["day"]
-                value = point["value"] - last_point["value"]
-                metrics << [component, metric_name, point["unit"], value]
-              end
-            rescue; end
+            last_point = @last_data_points[component][metric_name]
+            unless last_point.nil? || point["day"] != last_point["day"]
+              value = point["value"] - last_point["value"]
+              metrics << [component, metric_name, point["unit"], value]
+            end
             @last_data_points[component][metric_name] = point
           end
         end
