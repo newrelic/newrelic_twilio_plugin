@@ -10,7 +10,7 @@ module NewRelicTwilio
     class Agent < NewRelic::Plugin::Agent::Base
       agent_guid "com.newrelic.twilio"
       agent_version "0.0.1"
-      agent_human_labels("Overview") { "Overview" }
+      agent_human_labels("Twilio") { "Overview" }
 
       def setup_metrics
         @collector  = Collectors::Usage.new(@options[:account_sid], @options[:auth_token])
