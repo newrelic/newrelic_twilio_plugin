@@ -4,7 +4,7 @@ module NewRelicTwilio
       def account_data_points(account)
         data_points = {}
         account.usage.records.today.list.each do |record|
-          data_points[record.category] = {
+          data_points["#{record.category}-#{record.usage_unit}"] = {
             "value" => record.usage.to_f,
             "unit"  => record.usage_unit,
             "day"   => record.start_date

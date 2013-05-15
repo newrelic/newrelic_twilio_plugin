@@ -20,7 +20,7 @@ module NewRelicTwilio
       def poll_cycle
         @collector.collect.each do |component, metric_name, unit, value, timestamp|
           @components.report_metric(component, metric_name, unit, value)
-          report_metric("#{component}/#{metric_name}", unit, value)
+          #report_metric("#{component}/#{metric_name}", unit, value)
         end
         @components.process
       end
