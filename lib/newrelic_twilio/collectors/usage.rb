@@ -1,15 +1,28 @@
 module NewRelicTwilio
   module Collectors
     class Usage < Base
+      TOTAL_DATA_POINTS = %w[
+        calls
+        calls-inbound
+        sms
+        sms-inbound
+        sms-outbound
+        phonenumbers
+        shortcodes
+      ]
+
       def account_data_points(account)
         data_points = {}
         account.usage.records.today.list.each do |record|
-          data_points["#{record.category}-#{record.usage_unit}"] = {
+          append_total = TOTAL_DATA_POINTS.include?(record.category)
+          append = append_total ? "total" : record.usage_unit
+          data_points["#{record.category}-#{append}"] = {
             "value" => record.usage.to_f,
             "unit"  => record.usage_unit,
             "day"   => record.start_date
           }
-          data_points["#{record.category}-count"] = {
+          append = append_total ? "total" : "count"
+          data_points["#{record.category}-#{append}"] = {
             "value" => record.count.to_f,
             "unit"  => record.count_unit,
             "day"   => record.start_date
