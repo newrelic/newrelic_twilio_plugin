@@ -19,16 +19,15 @@ module NewRelicTwilio
         data_points = {}
         account.usage.records.today.list.each do |record|
           next if REJECTED_CATEGORIES.include?(record.category)
-          append_total = TOTAL_CATEGORIES.include?(record.category)
+          prepend_total = TOTAL_CATEGORIES.include?(record.category)
+          prepend = prepend_total ? "total/" : ""
           usage_unit = record.usage_unit.split("-").last
-          usage_append = append_total ? "total" : usage_unit
-          count_append = append_total ? "total" : "count"
-          data_points["#{record.category}-#{usage_append}"] = {
+          data_points["#{prepend}#{record.category}-#{usage_unit}"] = {
             "value" => record.usage.to_f,
             "unit"  => usage_unit,
             "day"   => record.start_date
           }
-          data_points["#{record.category}-#{count_append}"] = {
+          data_points["#{prepend}#{record.category}-count"] = {
             "value" => record.count.to_f,
             "unit"  => record.count_unit,
             "day"   => record.start_date
