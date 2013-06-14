@@ -12,7 +12,7 @@ This tool provides the New Relic Twilio metric collection agent.
 1. Download the latest tagged version from `https://github.com/newrelic-platform/newrelic_twilio_plugin/tags`
 2. Extract to the location you want to run the extention from
 3. Rename `config/template_newrelic_plugin.yml` to `config/newrelic_plugin.yml`
-4. Add New Relic license key to `config/newrelic_plugin.yml`
+4. Edit `config/newrelic_plugin.yml` and replace "YOUR_LICENSE_KEY_HERE" with your New Relic license key
 5. Run `bundle install`
 6. Run `bundle exec ./bin/newrelic_twilio`
 
