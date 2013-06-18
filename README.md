@@ -15,6 +15,3 @@ This tool provides the New Relic Twilio metric collection agent.
 4. Edit `config/newrelic_plugin.yml`
 5. Run `bundle install`
 6. Run `bundle exec ./bin/newrelic_twilio`
-
-## Todo
-- Change the overall call & sms count metric names, to re-enable stacked charts using a wildcard
