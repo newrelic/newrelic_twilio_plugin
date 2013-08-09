@@ -15,3 +15,7 @@ This tool provides the New Relic Twilio metric collection agent.
 4. Edit `config/newrelic_plugin.yml` and replace "LICENSE_KEY" with your New Relic license key
 5. Run `bundle install`
 6. Run `bundle exec ./bin/newrelic_twilio`
+
+## For Support
+Plugin support and troubleshooting assistance can be obtained by visiting [support.newrelic.com](https://support.newrelic.com)
+
