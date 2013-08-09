@@ -19,3 +19,5 @@ This tool provides the New Relic Twilio metric collection agent.
 ## For Support
 Plugin support and troubleshooting assistance can be obtained by visiting [support.newrelic.com](https://support.newrelic.com)
 
+## Credits
+The New Relic Twilio plugin was originally authored by [Sean Porter](https://github.com/portertech) and the team at [Heavy Water Operations](http://hw-ops.com/). Subsequent updates and support are provided by [New Relic](http://newrelic.com/platform).
