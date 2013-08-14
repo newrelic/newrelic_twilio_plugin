@@ -1,23 +1,17 @@
-GIT
-  remote: git@github.com:newrelic-platform/newrelic_plugin.git
-  revision: 1bc791178252f337be64de6c4b6af753881c8484
-  branch: release
-  specs:
-    newrelic_plugin (1.0.0)
-      faraday (>= 0.8.1)
-      json
-
 GEM
   remote: https://rubygems.org/
   specs:
-    builder (3.2.0)
-    faraday (0.8.7)
-      multipart-post (~> 1.1)
+    builder (3.2.2)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
     json (1.8.0)
     jwt (0.1.8)
       multi_json (>= 1.5)
-    multi_json (1.7.3)
+    multi_json (1.7.9)
     multipart-post (1.2.0)
+    newrelic_plugin (1.0.3)
+      faraday (>= 0.8.1)
+      json
     twilio-ruby (3.9.0)
       builder (>= 2.1.2)
       jwt (>= 0.1.2)
@@ -27,5 +21,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  newrelic_plugin!
+  newrelic_plugin (~> 1.0.3)
   twilio-ruby (= 3.9.0)
