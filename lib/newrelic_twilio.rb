@@ -9,7 +9,7 @@ module NewRelicTwilio
   module Twilio
     class Agent < NewRelic::Plugin::Agent::Base
       agent_guid "com.newrelic.twilio"
-      agent_version "1.0.1"
+      agent_version "1.0.2"
       agent_human_labels("Twilio") { "Overview" }
 
       def setup_metrics
